@@ -1,10 +1,24 @@
-import  express  from "express";
-
+import  express, {Request, Response}  from "express";
 const app = express()
 
-app.get("/",(req, res) =>{
-    return res.send('Hello world') 
-})
+
+const $PORT = process.env.PORT || 3000;
+
+
+app.use(express.json())
+
+app
+ .route("/")
+ .get((req: Request, res:Response) => {
+    res.send('You make a GET request :) ')
+ })
+ .post((req: Request, res:Response) => {
+    res.send('You make a POST request :) ')
+ })
+
+
+
+
 
 
 app.listen(3000, () => {
